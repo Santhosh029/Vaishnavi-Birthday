@@ -1,1 +1,187 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Birthday Surprise</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script></head><body><div class="page active" id="login"><h2>Enter the secret password to continue ❤️</h2><input id="pwd" type="password"><button onclick="checkPassword()">Unlock</button><p id="err"></p></div><div class="page" id="welcome"><h1>A cutiepie was born on this day, 26 years ago. ❤️🎉</h1><button onclick="showPage('balloons')">Please Click Here!</button></div><div class="page" id="balloons"><h2>Pop all balloons!</h2><div class="balloons"><div class="balloon" onclick="pop(this,'HAPPY')"></div><div class="balloon" onclick="pop(this,'BIRTHDAY')"></div><div class="balloon" onclick="pop(this,'Passenger Princess 💕')"></div></div><button id="next1" disabled onclick="showPage('message')">Next</button></div><div class="page" id="message"><div class="card"><h2>MESSAGE</h2><p>Happy Birthday! This message is a placeholder until you give me the final letter.</p><button onclick="showPage('gift')">Next</button></div></div><div class="page" id="gift"><div id="giftbox">🎁</div><h2>One Last Thing...</h2><button onclick="openGift()">Tap Here</button></div><div class="page" id="gallery"><h2>Gallery</h2><div class="gallery"><img src="https://placehold.co/250x350?text=Photo+1"><img src="https://placehold.co/250x350?text=Photo+2"><img src="https://placehold.co/250x350?text=Photo+3"><img src="https://placehold.co/250x350?text=Photo+4"><img src="https://placehold.co/250x350?text=Photo+5"></div></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#000000,#1b1b1b,#000000);
+            overflow:hidden;
+        }
+
+        body::before{
+            content:"";
+            position:absolute;
+            width:200%;
+            height:200%;
+            background:
+            radial-gradient(circle,#FFD700 1px,transparent 1px);
+            background-size:40px 40px;
+            animation:moveStars 25s linear infinite;
+            opacity:.25;
+        }
+
+        @keyframes moveStars{
+            from{
+                transform:translateY(0);
+            }
+            to{
+                transform:translateY(-200px);
+            }
+        }
+
+        .login-box{
+            position:relative;
+            z-index:10;
+            width:360px;
+            max-width:90%;
+            padding:40px;
+            background:rgba(20,20,20,.95);
+            border:2px solid gold;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 0 30px rgba(255,215,0,.35);
+        }
+
+        .heart{
+            font-size:60px;
+            animation:heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat{
+
+            0%{transform:scale(1);}
+            50%{transform:scale(1.15);}
+            100%{transform:scale(1);}
+        }
+
+        h2{
+            color:gold;
+            margin-top:15px;
+            margin-bottom:20px;
+        }
+
+        p{
+            color:white;
+            margin-bottom:25px;
+            line-height:1.6;
+        }
+
+        input{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            font-size:16px;
+            margin-bottom:20px;
+            outline:none;
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:gold;
+            color:black;
+            font-weight:bold;
+            font-size:17px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            transform:scale(1.03);
+        }
+
+        #error{
+            color:#ff4d4d;
+            margin-top:15px;
+            font-weight:bold;
+        }
+
+        .fade-out{
+            animation:fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut{
+            to{
+                opacity:0;
+                transform:scale(.9);
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="login-box">
+
+    <div class="heart">❤️</div>
+
+    <h2>Birthday Surprise</h2>
+
+    <p>
+        Enter the secret password to continue ❤️
+    </p>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password">
+
+    <button onclick="login()">
+        Unlock ❤️
+    </button>
+
+    <div id="error"></div>
+
+</div>
+
+<script>
+
+function login(){
+
+    const password=document.getElementById("password").value;
+
+    if(password==="23052026"){
+
+        document.querySelector(".login-box").classList.add("fade-out");
+
+        setTimeout(function(){
+
+            // Later this will open Page 2
+            alert("Password Correct ❤️");
+
+        },900);
+
+    }
+
+    else{
+
+        document.getElementById("error").innerHTML=
+        "❌ Incorrect password. Please try again.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
