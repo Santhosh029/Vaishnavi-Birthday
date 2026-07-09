@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>For My Love ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
-   1. GLOBAL STYLES, VARIABLES & BACKGROUND
+   1. ROMANTIC VARIABLES, GLOBAL STYLES & BACKGROUND
    ========================================================================== */
 :root {
-    --gold: #FFD700;
-    --gold-glow: rgba(255, 215, 0, 0.35);
-    --primary-pink: #ff4757;
-    --bg-dark: #07070a;
+    --rose-gold: #b76e79;
+    --gold-glow: rgba(183, 110, 121, 0.4);
+    --romantic-crimson: #d63031;
+    --velvet-dark: #0a0506;
 }
 
 *{
@@ -31,48 +31,49 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: var(--bg-dark);
+    background: var(--velvet-dark);
     position: relative;
 }
 
-/* Atmospheric Moving Nebula Background */
+/* Cosmic Valentine Moving Nebula Background */
 body::before {
     content: "";
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 15% 20%, rgba(255, 71, 87, 0.15), transparent 35%),
-        radial-gradient(circle at 85% 80%, rgba(255, 215, 0, 0.15), transparent 35%),
-        linear-gradient(145deg, #07070a, #120e1a, #07070a);
+        radial-gradient(circle at 20% 20%, rgba(214, 48, 49, 0.18), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(183, 110, 121, 0.2), transparent 40%),
+        linear-gradient(145deg, #0a0506, #1f080b, #0a0506);
     background-size: 200% 200%;
-    animation: bgMove 12s ease infinite;
+    animation: romanticBg 10s ease infinite;
     z-index: 1;
 }
 
-@keyframes bgMove {
+@keyframes romanticBg {
     0%, 100% { background-position: 0% 50%; filter: brightness(1); }
-    50% { background-position: 100% 50%; filter: brightness(1.15); }
+    50% { background-position: 100% 50%; filter: brightness(1.1); }
 }
 
-/* Glowing Background Star Fields */
-.star {
+/* Floating Miniature Hearts Generator Style */
+.heart-particle {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #fff;
-    border-radius: 50%;
-    animation: floatParticle linear infinite;
+    color: rgba(214, 48, 49, 0.4);
+    font-size: 14px;
+    user-select: none;
+    pointer-events: none;
+    animation: floatHearts linear infinite;
     z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(214, 48, 49, 0.2));
 }
 
-@keyframes floatParticle {
-    0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
-    15% { opacity: 0.8; box-shadow: 0 0 8px #fff; }
+@keyframes floatHearts {
+    0% { transform: translateY(105vh) scale(0.5) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.8; }
     90% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
 }
 
-/* Master Transitions Engine */
+/* Seamless Framework Router Transitions */
 .page {
     display: none;
     position: absolute;
@@ -85,7 +86,7 @@ body::before {
     z-index: 10;
     padding: 24px;
     opacity: 0;
-    transform: scale(0.96) translateY(15px);
+    transform: scale(0.95) translateY(10px);
     transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     pointer-events: none;
 }
@@ -97,15 +98,15 @@ body::before {
     pointer-events: all;
 }
 
-/* Premium Glassmorphic Container Cards */
+/* Velvet Rose Glassmorphic Container Cards */
 .card-base {
-    background: rgba(15, 15, 22, 0.78);
-    border: 1px solid rgba(255, 215, 0, 0.35);
-    border-radius: 28px;
+    background: rgba(18, 10, 12, 0.82);
+    border: 1px solid rgba(214, 48, 49, 0.35);
+    border-radius: 30px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(214, 48, 49, 0.15);
     padding: 45px 35px;
     width: 520px;
     max-width: 100%;
@@ -114,34 +115,34 @@ body::before {
 }
 
 h1 { 
-    color: var(--gold); 
+    color: #ff7675; 
     margin-bottom: 15px; 
     font-size: 30px; 
     font-weight: 700;
     letter-spacing: -0.5px;
-    text-shadow: 0 0 15px var(--gold-glow);
+    text-shadow: 0 0 15px rgba(255, 118, 117, 0.3);
 }
 
 p { 
-    color: rgba(255, 255, 255, 0.85); 
+    color: rgba(255, 255, 255, 0.88); 
     line-height: 1.7; 
     font-size: 15px; 
     font-weight: 300;
 }
 
-/* Luxury Interactive Buttons */
+/* Velvet Premium Interactive Action Buttons */
 button {
     margin-top: 30px;
-    padding: 16px 40px;
+    padding: 16px 42px;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(90deg, #FFD700, #FFEAA7);
+    background: linear-gradient(90deg, #d63031, #ff7675);
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.5px;
     cursor: pointer;
-    color: #0d0d11;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(214, 48, 49, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -152,382 +153,329 @@ button::before {
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
     transition: 0.5s;
 }
 
-button:hover::before {
-    left: 100%;
-}
+button:hover::before { left: 100%; }
 
 button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px var(--gold-glow);
-}
-
-button:active {
-    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(214, 48, 49, 0.5);
 }
 
 button:disabled {
-    background: #252530;
-    color: #555565;
+    background: #2b1618;
+    color: #614043;
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(214, 48, 49, 0.1);
 }
 
 /* ==========================================================================
-   2. UNIQUE PAGE ANIMATIONS & STATES
+   2. ROMANCE MODULE COMPONENT ANIMATIONS
    ========================================================================== */
 
-/* --- Page 1: Secure Gatekeeping Gateway --- */
+/* --- Page 1: Secure Security Entry Port --- */
 .login-card { width: 400px; }
-.lock { font-size: 55px; animation: pulse 2.5s infinite ease-in-out; display: inline-block; }
-.heart { font-size: 40px; animation: heartBeat 1.3s infinite ease-in-out; display: inline-block; filter: drop-shadow(0 0 10px var(--primary-pink)); margin-left: 10px; }
+.lock { font-size: 50px; animation: heartbeatGlow 2.5s infinite ease-in-out; display: inline-block; }
+.heart-main { font-size: 55px; animation: heartpulsate 1.2s infinite ease-in-out; display: inline-block; filter: drop-shadow(0 0 15px var(--romantic-crimson)); margin-left: 8px; }
 
 input {
     width: 100%; margin-top: 25px; padding: 16px; border: none; outline: none;
-    border-radius: 16px; font-size: 18px; text-align: center; background: rgba(255, 255, 255, 0.05); color: white;
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 16px; font-size: 18px; text-align: center; background: rgba(255, 255, 255, 0.04); color: white;
+    border: 1px solid rgba(214, 48, 49, 0.3);
     letter-spacing: 4px;
     transition: all 0.3s ease;
 }
 input:focus { 
-    border-color: var(--gold); 
-    background: rgba(255, 255, 255, 0.09);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    border-color: #ff7675; 
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(214, 48, 49, 0.25);
 }
-.error { margin-top: 18px; padding: 12px; border-radius: 12px; background: rgba(255, 71, 87, 0.12); border: 1px solid rgba(255, 71, 87, 0.25); color: #ff6b81; display: none; font-size: 13px; }
+.error { margin-top: 18px; padding: 12px; border-radius: 12px; background: rgba(214, 48, 49, 0.15); border: 1px solid rgba(214, 48, 49, 0.3); color: #ff7675; display: none; font-size: 13px; }
 
-.shake { animation: shakeEffect 0.5s ease-in-out; }
-.unlock { animation: unlockEffect 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; }
+.shake { animation: cardViolentShake 0.5s ease-in-out; }
+.unlock { animation: accessGrantedDismiss 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; }
 
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 8px var(--gold-glow)); } }
-@keyframes heartBeat { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.18); } 60% { transform: scale(1.08); } }
-@keyframes shakeEffect { 0%, 100% { transform: translateX(0); } 15%, 45%, 75% { transform: translateX(-10px); } 30%, 60%, 90% { transform: translateX(10px); } }
-@keyframes unlockEffect { 100% { transform: scale(0.8); opacity: 0; filter: blur(10px); } }
+@keyframes heartbeatGlow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes heartpulsate { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--romantic-crimson)); } 30% { transform: scale(1.2); filter: drop-shadow(0 0 22px #ff7675); } 60% { transform: scale(1.06); } }
+@keyframes cardViolentShake { 0%, 100% { transform: translateX(0); } 15%, 45%, 75% { transform: translateX(-10px); } 30%, 60%, 90% { transform: translateX(10px); } }
+@keyframes accessGrantedDismiss { 100% { transform: scale(0.75); opacity: 0; filter: blur(12px); } }
 
-/* --- Page 3: Custom Physics Balloons --- */
-.balloon-container {
+/* --- Page 3: Love Note Hearts Replacement --- */
+.love-container {
     display: flex;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
-    margin: 35px 0 20px 0;
-    height: 240px;
+    margin: 40px 0 30px 0;
+    height: 180px;
 }
-.balloon-wrapper {
+.love-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: 30%;
 }
-.balloon {
-    width: 85px;
-    height: 105px;
-    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+.love-note {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(214, 48, 49, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
     cursor: pointer;
-    position: relative;
-    animation: floatBalloon 3.5s ease-in-out infinite alternate;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: inset -8px -12px 20px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    animation: floatingNote 3s ease-in-out infinite alternate;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.balloon::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 37px;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-}
-.balloon::before {
-    content: ""; position: absolute; top: 15px; left: 15px; width: 15px; height: 25px; background: rgba(255,255,255,0.35); border-radius: 50%; transform: rotate(-30deg);
-}
-.balloon-string {
-    width: 2px;
-    height: 75px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-    transform-origin: top center;
-    animation: swingString 3.5s ease-in-out infinite alternate;
-}
-.b1 { background: linear-gradient(135deg, #ff4757, #ff6b81); animation-delay: 0s; } .b1::after { border-bottom: 8px solid #ff4757; }
-.b2 { background: linear-gradient(135deg, #00d2d3, #1dd1a1); animation-delay: 0.5s; } .b2::after { border-bottom: 8px solid #00d2d3; }
-.b3 { background: linear-gradient(135deg, #9b5de5, #f15bb5); animation-delay: 1s; } .b3::after { border-bottom: 8px solid #9b5de5; }
+.b1 { animation-delay: 0s; box-shadow: 0 0 15px rgba(255, 71, 87, 0.2); }
+.b2 { animation-delay: 0.5s; box-shadow: 0 0 15px rgba(214, 48, 49, 0.2); }
+.b3 { animation-delay: 1s; box-shadow: 0 0 15px rgba(232, 67, 147, 0.2); }
 
-.balloon:hover { transform: scale(1.12) translateY(-5px); }
+.love-note:hover {
+    transform: scale(1.15) translateY(-8px);
+    background: rgba(214, 48, 49, 0.15);
+    border-color: #ff7675;
+    box-shadow: 0 0 25px rgba(214, 48, 49, 0.4);
+}
 
+.love-note.opened {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes floatingNote {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+/* Custom Animated Reveal Texts */
 .pop-text {
     position: absolute;
-    color: var(--gold);
+    color: #ff7675;
     font-weight: 600;
     font-size: 16px;
     white-space: nowrap;
     opacity: 0;
-    transform: translateY(20px) scale(0.6);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    bottom: -35px;
-    text-shadow: 0 0 10px var(--gold-glow);
-}
-.balloon.popped {
-    animation: popExplode 0.25s cubic-bezier(0.1,-0.6,0.85,0) forwards;
-    pointer-events: none;
-}
-.balloon.popped + .balloon-string { display: none; }
-.balloon.popped ~ .pop-text { opacity: 1; transform: translateY(0) scale(1); }
-
-@keyframes floatBalloon {
-    0% { transform: translateY(0) rotate(-4deg); }
-    100% { transform: translateY(-20px) rotate(4deg); }
-}
-@keyframes swingString {
-    0% { transform: rotate(-3deg); }
-    100% { transform: rotate(3deg); }
-}
-@keyframes popExplode {
-    0% { transform: scale(1); opacity: 1; }
-    40% { transform: scale(1.3); opacity: 0.8; filter: brightness(1.5); }
-    100% { transform: scale(0); opacity: 0; }
+    transform: scale(0.5);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-shadow: 0 0 10px rgba(255,118,117,0.3);
 }
 
-/* --- Page 4: Interactive 3D Greeting Envelope --- */
-.card-container {
-    perspective: 1600px;
-    width: 380px;
-    height: 270px;
-    margin: 35px auto 20px auto;
+/* --- Premium Style Upgrade for Passenger Princess --- */
+.pop-text.special-title {
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 34px;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #ffd700, #ff7675, #ffd700);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 3s linear infinite, dramaticGrow 1s ease-out forwards;
 }
-.birthday-card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
+
+.love-note.opened ~ .pop-text { 
+    opacity: 1; 
+    transform: scale(1); 
 }
-.birthday-card.open {
-    transform: rotateY(-150deg);
+
+@keyframes shineText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
-.card-front, .card-inside {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+@keyframes dramaticGrow {
+    0% { transform: scale(0.3) translateY(20px); filter: blur(5px); }
+    100% { transform: scale(1) translateY(0); filter: blur(0); }
 }
+
+/* --- Page 4: 3D Luxury Flip Heart Envelope --- */
+.card-container { perspective: 1600px; width: 380px; height: 270px; margin: 35px auto 20px auto; }
+.birthday-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+.birthday-card.open { transform: rotateY(-150deg); }
+.card-front, .card-inside { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+
 .card-front {
-    background: linear-gradient(135deg, #1e1e2f, #0f0f1a);
-    border: 2px solid var(--gold);
-    color: var(--gold);
+    background: linear-gradient(135deg, #240b0e, #0f0406);
+    border: 2px solid var(--rose-gold);
+    color: #ff7675;
     z-index: 2;
 }
 .card-inside {
-    background: #151522;
-    border: 1px solid rgba(255,215,0,0.25);
+    background: #190a0c;
+    border: 1px solid rgba(214,48,49,0.25);
     color: white;
     transform: rotateY(180deg) translateZ(1px);
     z-index: 1;
 }
 
-/* --- Page 5: Cinematic Gift Box Assembly --- */
-.gift-scene {
-    width: 220px;
-    height: 220px;
-    margin: 30px auto;
-    position: relative;
-    cursor: pointer;
-}
+/* --- Page 5: Pulsing Velvet Heart-Box Surprise --- */
+.gift-scene { width: 220px; height: 220px; margin: 30px auto; position: relative; cursor: pointer; }
 .gift-box {
-    width: 130px;
-    height: 120px;
-    background: linear-gradient(135deg, #ff4757, #ee5253);
-    position: absolute;
-    bottom: 10px;
-    left: 45px;
+    width: 130px; height: 120px;
+    background: linear-gradient(135deg, #d63031, #b21f1f);
+    position: absolute; bottom: 10px; left: 45px;
     border-radius: 0 0 12px 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     transition: all 0.4s ease;
+    animation: heartBoxBeating 2s infinite ease-in-out;
 }
 .gift-lid {
-    width: 142px;
-    height: 38px;
-    background: linear-gradient(135deg, #ff6b81, #ff4757);
-    position: absolute;
-    bottom: 126px;
-    left: 39px;
-    z-index: 2;
-    border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    width: 142px; height: 38px;
+    background: linear-gradient(135deg, #ff7675, #d63031);
+    position: absolute; bottom: 126px; left: 39px; z-index: 2;
+    border-radius: 6px; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     transition: all 0.6s cubic-bezier(0.68, -0.6, 0.27, 1.55);
+    animation: heartBoxBeating 2s infinite ease-in-out;
 }
-.ribbon-v, .ribbon-h { background: var(--gold); position: absolute; box-shadow: 0 0 8px rgba(255,215,0,0.4); }
+.ribbon-v, .ribbon-h { background: var(--rose-gold); position: absolute; box-shadow: 0 0 10px rgba(183,110,121,0.5); }
 .ribbon-v { width: 22px; height: 100%; left: 54px; }
 .ribbon-h { width: 100%; height: 22px; top: 49px; }
 .gift-lid .ribbon-v { height: 100%; left: 60px; }
 .gift-lid .ribbon-h { width: 100%; height: 16px; top: 11px; }
 
-/* Subtle Idle Hover shake */
-.gift-scene:hover .gift-lid { transform: translateY(-4px); }
-.gift-scene:hover .gift-box { transform: scale(1.02); }
+@keyframes heartBoxBeating {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.04); }
+    40% { transform: scale(1.02); }
+    60% { transform: scale(1.06); }
+}
 
-/* Box Pop Open Kinetic State Transitions */
 .gift-scene.open .gift-lid {
-    transform: translateY(-90px) rotate(45deg) scale(0.8);
+    animation: none;
+    transform: translateY(-100px) rotate(40deg) scale(0.7);
     opacity: 0;
 }
 .gift-scene.open .gift-box {
-    animation: boxPopAway 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+    animation: boxExplosiveCollapse 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
 }
-@keyframes boxPopAway {
+@keyframes boxExplosiveCollapse {
     0% { transform: scale(1); }
-    30% { transform: scale(1.15); filter: brightness(1.2); }
-    100% { transform: scale(0); opacity: 0; filter: blur(5px); }
+    30% { transform: scale(1.2); filter: brightness(1.3); }
+    100% { transform: scale(0); opacity: 0; filter: blur(6px); }
 }
 
-/* --- Page 6: Seamless Fluid Gallery Deck --- */
+/* --- Page 6: Immersive Polaroid Slides Deck --- */
 .gallery-container {
-    width: 100%;
-    max-width: 440px;
-    height: 330px;
-    position: relative;
-    margin: 25px auto;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 2px solid var(--gold);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+    width: 100%; max-width: 440px; height: 330px;
+    position: relative; margin: 25px auto; overflow: hidden;
+    border-radius: 20px; border: 2px solid var(--rose-gold);
+    box-shadow: 0 0 30px rgba(214, 48, 49, 0.25);
 }
-.slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: scale(1.12) rotate(1deg);
-    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
-}
-.slide.active {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-}
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.slide { position: absolute; inset: 0; opacity: 0; transform: scale(1.1) rotate(1deg); transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out; }
+.slide.active { opacity: 1; transform: scale(1) rotate(0deg); }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
 
-#confetti-canvas {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
-    width: 100%;
-    height: 100%;
-}
+#confetti-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 50; width: 100%; height: 100%; }
 </style>
 </head>
 <body>
 
 <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
-
 <canvas id="confetti-canvas"></canvas>
 
 <script>
-/* Dynamic Background Space Particles */
-for(let i=0; i<65; i++){
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.animationDuration = (6 + Math.random() * 10) + "s";
-    star.style.animationDelay = Math.random() * 7 + "s";
-    document.body.appendChild(star);
+/* Dynamic Romantic Hearts Stream Background Generation Engine */
+for(let i=0; i<45; i++){
+    const heart = document.createElement("div");
+    heart.className = "heart-particle";
+    heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (7 + Math.random() * 9) + "s";
+    heart.style.animationDelay = Math.random() * 6 + "s";
+    document.body.appendChild(heart);
 }
 </script>
 
+<!-- PAGE 1: PASSION SECURE PORTAL -->
 <section id="page1" class="page active">
     <div class="card-base login-card" id="loginCard">
-        <div style="margin-bottom: 10px;">
-            <span class="lock" id="lock">🔒</span><span class="heart">❤️</span>
+        <div style="margin-bottom: 12px;">
+            <span class="lock" id="lock">🔒</span><span class="heart-main">❤️</span>
         </div>
         <h1>Birthday Surprise</h1>
-        <p>Enter our special secret password date to proceed ✨</p>
+        <p>Enter our special anniversary/secret date to begin our romantic journey ❤️</p>
         <input type="password" id="password" placeholder="DDMMYYYY" maxlength="8">
-        <button onclick="checkLogin()">Unlock My Surprise ✨</button>
+        <button onclick="checkLogin()">Unlock My Hearts ✨</button>
         <div id="error" class="error"></div>
     </div>
 </section>
 
+<!-- PAGE 2: VALENTINE TIMELINE OVERTURE -->
 <section id="page2" class="page">
     <div class="card-base">
-        <h1 style="font-size: 60px; margin-bottom: 20px;">🎉</h1>
-        <p style="font-size: 20px; font-weight: 500; color: var(--gold); line-height: 1.6;">
+        <h1 style="font-size: 65px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(214,48,49,0.4));">💝</h1>
+        <p style="font-size: 20px; font-weight: 500; color: #ff7675; line-height: 1.6;">
             "A cutiepie was born on this day, 26 years ago. ❤️🎉"
         </p>
-        <button onclick="navigate(2, 3)">Please Click Here!</button>
+        <button onclick="navigate(2, 3)">Please Click Here My Love!</button>
     </div>
 </section>
 
+<!-- PAGE 3: REPLACED CONTENT (LOVE NOTES HEARTS) -->
 <section id="page3" class="page">
     <div class="card-base" style="width: 600px;">
-        <h1>Pop the Balloons! 🎈</h1>
-        <p>Pop every single balloon to safely unpack your true hidden identity.</p>
+        <h1>Tap My Love Notes! 💖</h1>
+        <p>Gently click each sealed secret container below to uncover your hidden titles.</p>
         
-        <div class="balloon-container">
-            <div class="balloon-wrapper">
-                <div class="balloon b1" onclick="popBalloon(this)"></div>
-                <div class="balloon-string"></div>
-                <div class="pop-text">🎈 HAPPY</div>
+        <div class="love-container">
+            <div class="love-wrapper">
+                <div class="love-note b1" onclick="openNote(this)">✉️</div>
+                <div class="pop-text">❤️ HAPPY</div>
             </div>
-            <div class="balloon-wrapper">
-                <div class="balloon b2" onclick="popBalloon(this)"></div>
-                <div class="balloon-string"></div>
-                <div class="pop-text">🎈 BIRTHDAY</div>
+            <div class="love-wrapper">
+                <div class="love-note b2" onclick="openNote(this)">💌</div>
+                <div class="pop-text">❤️ BIRTHDAY</div>
             </div>
-            <div class="balloon-wrapper">
-                <div class="balloon b3" onclick="popBalloon(this)"></div>
-                <div class="balloon-string"></div>
-                <div class="pop-text">Passenger Princess 💕</div>
+            <div class="love-wrapper">
+                <div class="love-note b3" onclick="openNote(this)">💝</div>
+                <div class="pop-text special-title">Passenger Princess 💕</div>
             </div>
         </div>
 
-        <button id="balloon-next" disabled onclick="navigate(3, 4)">Next ✨</button>
+        <button id="balloon-next" disabled onclick="navigate(3, 4)">Continue ✨</button>
     </div>
 </section>
 
+<!-- PAGE 4: ROMANTIC 3D LETTER FLIP -->
 <section id="page4" class="page">
     <div class="card-base">
         <h1>An Envelope For You ✉️</h1>
-        <p>Tap the greeting envelope setup below to reveal your personal message note.</p>
+        <p>Tap the velvet letter envelope framework setup below to read your note message.</p>
         
         <div class="card-container" onclick="toggleCard()">
             <div class="birthday-card" id="bCard">
                 <div class="card-front">
-                    <span style="font-size: 50px; margin-bottom: 10px;">💝</span>
+                    <span style="font-size: 55px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(214,48,49,0.3));">🌹</span>
                     <h3>To My Favorite Human</h3>
-                    <p style="font-size: 13px; color: var(--gold); margin-top: 15px;">(Tap to Flip Open)</p>
+                    <p style="font-size: 13px; color: var(--rose-gold); margin-top: 15px;">(Tap to Reveal Letter)</p>
                 </div>
                 <div class="card-inside">
-                    <h2 style="color: var(--gold); margin-bottom: 5px; font-size: 22px;">MESSAGE</h2>
-                    <hr style="width: 50px; border: none; height: 2px; background: var(--gold); margin-bottom: 15px;">
-                    <p style="font-size: 14px; line-height: 1.7; font-weight: 400; color: #f0f0f5;">
+                    <h2 style="color: #ff7675; margin-bottom: 5px; font-size: 22px;">MY MESSAGE</h2>
+                    <hr style="width: 50px; border: none; height: 2px; background: var(--rose-gold); margin-bottom: 15px;">
+                    <p style="font-size: 14px; line-height: 1.7; font-weight: 400; color: #fcefe6;">
                         You bring so much joy, light, and laughter into my universe. Thank you for being you, and for making every single moment beautiful. May this year offer you all the wonders you deserve!
                     </p>
                 </div>
             </div>
         </div>
 
-        <button onclick="navigate(4, 5)">Next Card ➡️</button>
+        <button onclick="navigate(4, 5)">Next Surprise ➡️</button>
     </div>
 </section>
 
+<!-- PAGE 5: THE KINETIC BEATING BOX CHRONICLE -->
 <section id="page5" class="page">
     <div class="card-base">
         <h1>"One Last Thing..." 🎁</h1>
-        <p>There is an ultimate gift sequence wrapped tight inside this mysterious box container.</p>
+        <p>A beautiful celebration sequence lies tucked away deep inside our special heartbeat crate box container.</p>
         
         <div class="gift-scene" id="giftScene" onclick="openGiftBox()">
             <div class="gift-lid">
@@ -540,36 +488,36 @@ for(let i=0; i<65; i++){
             </div>
         </div>
 
-        <button onclick="openGiftBox()">Tap Box to Open</button>
+        <button onclick="openGiftBox()">Open My Heart Box</button>
     </div>
 </section>
 
+<!-- PAGE 6: THE RED CAROUSEL MEMORY CANVAS -->
 <section id="page6" class="page">
     <div class="card-base" style="width: 550px; padding: 35px 25px;">
         <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
-        <p style="color: var(--gold); font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy 26th Birthday, My Love!</p>
+        <p style="color: #ff7675; font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy 26th Birthday, My Love!</p>
         
         <div class="gallery-container">
-            <div class="slide active"><img src="photo1.jpg" alt="Her Photo 1"></div>
-            <div class="slide"><img src="photo2.jpg" alt="Her Photo 2"></div>
-            <div class="slide"><img src="photo3.jpg" alt="Her Photo 3"></div>
-            <div class="slide"><img src="photo4.jpg" alt="Her Photo 4"></div>
-            <div class="slide"><img src="photo5.jpg" alt="Her Photo 5"></div>
+            <div class="slide active"><img src="photo1.jpg" alt="Memory Photo 1"></div>
+            <div class="slide"><img src="photo2.jpg" alt="Memory Photo 2"></div>
+            <div class="slide"><img src="photo3.jpg" alt="Memory Photo 3"></div>
+            <div class="slide"><img src="photo4.jpg" alt="Memory Photo 4"></div>
+            <div class="slide"><img src="photo5.jpg" alt="Memory Photo 5"></div>
         </div>
 
-        <p style="font-size: 13px; color: #8a8a9e; margin-top: 15px;">Turning another year older, but always the same amazing soul.</p>
+        <p style="font-size: 13px; color: #a48e91; margin-top: 15px;">Turning another year older, but always the same amazing soul.</p>
     </div>
 </section>
 
 <script>
-// Orchestration Engine Navigation Maps
+// Flow Router Management Systems
 function navigate(currentNum, nextNum) {
     const currentPage = document.getElementById(`page${currentNum}`);
     const nextPage = document.getElementById(`page${nextNum}`);
     
     currentPage.classList.remove("active");
     
-    // Smooth delay switch for clean UI swap
     setTimeout(() => {
         nextPage.classList.add("active");
         if(nextNum === 6) {
@@ -579,17 +527,16 @@ function navigate(currentNum, nextNum) {
     }, 300);
 }
 
-// Security Validation Algorithm
+// Identity Validation Algorithmic Interceptor
 function checkLogin(){
     const inputPass = document.getElementById("password").value;
     const errorEl = document.getElementById("error");
     const cardEl = document.getElementById("loginCard");
     const lockEl = document.getElementById("lock");
 
-    // Default password as matches target criteria
     if(inputPass === "23052026"){
         lockEl.innerHTML = "🔓";
-        lockEl.style.transform = "scale(1.2)";
+        lockEl.style.transform = "scale(1.25)";
         setTimeout(() => { cardEl.classList.add("unlock"); }, 300);
         setTimeout(() => { navigate(1, 2); }, 900);
     } else {
@@ -600,40 +547,38 @@ function checkLogin(){
     }
 }
 
-// Balloon Mechanics Handler
-let poppedCount = 0;
-function popBalloon(element) {
-    if(!element.classList.contains("popped")) {
-        element.classList.add("popped");
-        poppedCount++;
-        if(poppedCount === 3) {
+// Love Notes Interaction Controller Engine
+let openedNotesCount = 0;
+function openNote(element) {
+    if(!element.classList.contains("opened")) {
+        element.classList.add("opened");
+        openedNotesCount++;
+        if(openedNotesCount === 3) {
             document.getElementById("balloon-next").removeAttribute("disabled");
         }
     }
 }
 
-// Flip/Card Management Logic
+// Envelope Action Triggers
 function toggleCard() {
     document.getElementById("bCard").classList.toggle("open");
 }
 
-// Gift Box Release Sequence Trigger
+// Gift Opening Sequence Execution Maps
 let boxOpened = false;
 function openGiftBox() {
     if(boxOpened) return;
     boxOpened = true;
     const box = document.getElementById("giftScene");
     box.classList.add("open");
-    setTimeout(() => {
-        navigate(5, 6);
-    }, 1000);
+    setTimeout(() => { navigate(5, 6); }, 1000);
 }
 
-// Automatic Media Framework Setup & Carousel Deck Loop
+// Memory Slider Deck Rotation Engine & Audio Setup
 function startGalleryPlayback() {
     const audioStream = document.getElementById("bg-music");
     if(audioStream) {
-        audioStream.play().catch(err => console.log("Audio pipeline context deferred until native gesture actions."));
+        audioStream.play().catch(err => console.log("Audio native stream pipelines deferred until click interaction frameworks."));
     }
 
     let activeIndex = 0;
@@ -647,7 +592,7 @@ function startGalleryPlayback() {
     }, 3500);
 }
 
-// Confetti Particle Canvas Generation Logic
+// Custom Valentine Rain Heart-Confetti Mechanics Canvas
 let canvas, ctx, pieces = [];
 function initConfettiRain() {
     canvas = document.getElementById("confetti-canvas");
@@ -656,34 +601,45 @@ function initConfettiRain() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const colors = ['#ff4757', '#ff6b81', '#FFD700', '#00d2d3', '#9b5de5', '#f15bb5'];
+    const colors = ['#ff4757', '#ff6b81', '#d63031', '#ff7675', '#e84393', '#fd79a8'];
 
-    for (let i = 0; i < 140; i++) {
+    for (let i = 0; i < 120; i++) {
         pieces.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
-            r: Math.random() * 5 + 4,
-            d: Math.random() * canvas.height,
+            size: Math.random() * 8 + 6,
             color: colors[Math.floor(Math.random() * colors.length)],
-            tilt: Math.random() * 10 - 5,
-            speed: Math.random() * 2.5 + 2
+            speed: Math.random() * 2 + 1.5,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 2 - 1
         });
     }
     requestAnimationFrame(updateConfettiFrame);
+}
+
+// Special Heart Drawing Paths for Celebration Canvas
+function drawConfettiHeart(ctx, x, y, size, color, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate((angle * Math.PI) / 180);
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    
+    ctx.moveTo(0, -size / 4);
+    ctx.bezierCurveTo(size / 2, -size, size * 1.2, -size / 3, 0, size);
+    ctx.bezierCurveTo(-size * 1.2, -size / 3, -size / 2, -size, 0, -size / 4);
+    
+    ctx.fill();
+    ctx.restore();
 }
 
 function updateConfettiFrame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     pieces.forEach((p) => {
         p.y += p.speed;
-        p.x += Math.sin(p.tilt) * 0.4;
+        p.rotation += p.rotationSpeed;
         
-        ctx.beginPath();
-        ctx.lineWidth = p.r;
-        ctx.strokeStyle = p.color;
-        ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
-        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
-        ctx.stroke();
+        drawConfettiHeart(ctx, p.x, p.y, p.size, p.color, p.rotation);
 
         if (p.y > canvas.height) {
             p.y = -20;
