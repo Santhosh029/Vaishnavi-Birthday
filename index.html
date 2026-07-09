@@ -294,6 +294,129 @@ font-size:13px;
 color:#888;
 
 }
+/* ========================= */
+/* Page Management */
+/* ========================= */
+
+.page{
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+animation:fadeIn .8s ease;
+}
+
+.page.active{
+display:flex;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+  /* ========================= */
+/* PAGE 2 - Welcome Card */
+/* ========================= */
+
+.welcome-card{
+
+position:relative;
+z-index:10;
+
+width:700px;
+max-width:90%;
+
+padding:50px;
+
+background:rgba(18,18,18,.92);
+
+border:2px solid rgba(255,215,0,.5);
+
+border-radius:25px;
+
+backdrop-filter:blur(12px);
+
+text-align:center;
+
+box-shadow:
+0 0 20px rgba(255,215,0,.25),
+0 0 50px rgba(255,215,0,.12);
+
+}
+
+.welcome-card h1{
+
+color:#FFD700;
+
+font-size:42px;
+
+line-height:1.5;
+
+margin-bottom:25px;
+
+min-height:120px;
+
+}
+
+.welcome-card p{
+
+color:white;
+
+font-size:20px;
+
+line-height:1.8;
+
+min-height:150px;
+
+}
+
+.welcome-card button{
+
+margin-top:35px;
+
+width:auto;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:linear-gradient(90deg,#FFD700,#FFF2A0);
+
+color:black;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.welcome-card button:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 20px gold;
+
+}
 
 </style>
 
@@ -363,7 +486,26 @@ Made with ❤️ by Santhosh
 </div>
 
 </section>
+  
+<!-- ================= PAGE 2 ================= -->
 
+<section id="page2" class="page">
+
+<div class="welcome-card">
+
+<h1 id="typingTitle"></h1>
+
+<p id="typingText"></p>
+
+<button onclick="gotoPage3()">
+
+✨ Please Click Here! ✨
+
+</button>
+
+</div>
+
+</section>
 <script>
 
 function login(){
@@ -392,8 +534,10 @@ card.classList.add("unlock");
 
 setTimeout(()=>{
 
-// Replace this with Page 2 later
-alert("Welcome ❤️");
+document.getElementById("page1").classList.remove("active");
+document.getElementById("page2").classList.add("active");
+
+showWelcome();
 
 },1300);
 
@@ -426,7 +570,15 @@ document.getElementById("password").focus();
 }
 
 }
+function showWelcome(){
 
+document.getElementById("typingTitle").innerHTML =
+"A cutiepie was born on this day,<br>26 years ago ❤️🎉";
+
+document.getElementById("typingText").innerHTML =
+"Today isn't just another day...<br><br>It's the day someone incredibly beautiful came into this world. ❤️";
+
+}
 </script>
 
 </body>
