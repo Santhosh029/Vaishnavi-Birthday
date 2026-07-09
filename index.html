@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Universe ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght=700&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Added Dancing Script for the ultimate romantic touch -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght=700&family=Dancing+Script:wght@600;700&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
@@ -224,20 +225,28 @@ input:focus {
     letter-spacing: 1px;
 }
 
-/* --- Page 2 Alternative Layout Configuration --- */
+/* --- Page 2 Romantic Calligraphy Typography --- */
+.romantic-quote-container {
+    padding: 10px 5px;
+}
 .quote-highlight {
-    font-family: 'Caveat', cursive, sans-serif;
-    color: #ff7675;
-    font-size: 34px;
+    font-family: 'Dancing Script', cursive, serif;
+    background: linear-gradient(135deg, #ffeaa7, #ff7675);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.4;
     display: block;
-    margin-bottom: 12px;
-    text-shadow: 0 0 10px rgba(255, 118, 117, 0.2);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 2px 8px rgba(255, 118, 117, 0.2));
 }
 .quote-body {
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     font-weight: 300;
+    letter-spacing: 0.3px;
 }
 
 /* --- Page 3: Staggered Cross Step Layout --- */
@@ -446,10 +455,9 @@ for(let i=0; i<45; i++){
 <section id="page1b" class="page">
     <div class="card-base">
         <h1 id="timer-title" style="font-size: 28px;">Patience, My Love... ⏳</h1>
-        <p id="timer-msg">The magic is still gathering... Your birthday celebration will unveil its secrets at 10:25 AM.</p>
+        <p id="timer-msg">The magic is still gathering... Your birthday celebration will unveil its secrets on July 10th at 10:25 AM IST.</p>
         
         <div class="countdown-box" id="time-container">
-            <!-- Dynamic structures will append or switch metrics here dynamically inside the script -->
             <div class="time-unit" id="box-1"><span id="metric-1" class="time-number">00</span><span id="label-1" class="time-label">Days</span></div>
             <div class="time-unit" id="box-2"><span id="metric-2" class="time-number">00</span><span id="label-2" class="time-label">Hrs</span></div>
             <div class="time-unit" id="box-3"><span id="metric-3" class="time-number">00</span><span id="label-3" class="time-label">Mins</span></div>
@@ -463,11 +471,11 @@ for(let i=0; i<45; i++){
 <!-- PAGE 2: VALENTINE OVERTURE -->
 <section id="page2" class="page">
     <div class="card-base" style="padding: 50px 40px;">
-        <h1 style="font-size: 55px; margin-bottom: 15px;">💖</h1>
-        <div style="margin-bottom: 10px;">
-            <span class="quote-highlight">"After eight years, I finally found the person my heart had been searching for all along...</span>
+        <h1 style="font-size: 45px; margin-bottom: 20px;">💖</h1>
+        <div class="romantic-quote-container">
+            <span class="quote-highlight">"After eight years, I finally found the person my heart had been searching for all along..."</span>
             <p class="quote-body">
-                You are not just my love — you are the beautiful answer to every silent prayer I ever made. ❤️"
+                You are not just my love — you are the beautiful answer to every silent prayer I ever made. ❤️
             </p>
         </div>
         <button onclick="navigate(2, 3)">Please Click Here My Love!</button>
@@ -632,10 +640,10 @@ function checkLogin(){
 // TIMELOCK CLOCK & LIVE COUNT-UP ENGINE FROM DOB
 let timerInterval;
 function startTimerEngine() {
-    // 1. Time Pass Condition (July 10, 2026 at 10:25 AM IST)
-    const unlockTarget = new Date("2026-07-10T02:33:00+05:30").getTime();
-    // 2. Real DOB Time Record (July 10, 1999 at 10:25 AM IST)
-    const birthDate = new Date("1999-07-10T02:33:00+05:30");
+    // Line 249: Countdown Target (July 10, 2026 at 10:25 AM IST)
+    const unlockTarget = new Date("2026-07-10T10:25:00+05:30").getTime();
+    // Line 251: Date of Birth Record (July 10, 1999 at 10:25 AM IST)
+    const birthDate = new Date("1999-07-10T10:25:00+05:30");
 
     const titleEl = document.getElementById("timer-title");
     const msgEl = document.getElementById("timer-msg");
@@ -648,7 +656,6 @@ function startTimerEngine() {
         const now = new Date().getTime();
         const distanceToUnlock = unlockTarget - now;
 
-        // IF LOCKED: Run the countdown safely
         if (distanceToUnlock > 0) {
             const days = Math.floor(distanceToUnlock / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distanceToUnlock % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -660,22 +667,18 @@ function startTimerEngine() {
             document.getElementById("metric-3").innerText = minutes.toString().padStart(2, '0');
             document.getElementById("metric-4").innerText = seconds.toString().padStart(2, '0');
         } 
-        // IF UNLOCKED: Switch over to real live time passed since her birth
         else {
             if (!displayedCountUpLayout) {
-                // Initialize the structural conversion once
                 titleEl.innerHTML = "The Wait is Over! 💖";
                 msgEl.innerHTML = "Exactly this long ago, a beautiful angel was born into this universe to change my life forever:";
                 btnEl.removeAttribute("disabled");
                 
-                // Add a fifth unit block container layout seamlessly for Years metric tracking
                 const yearBox = document.createElement("div");
                 yearBox.className = "time-unit";
                 yearBox.style.borderColor = "rgba(255, 215, 0, 0.4)";
                 yearBox.innerHTML = '<span id="metric-years" class="time-number" style="color: #ffd700;">00</span><span class="time-label">Yrs</span>';
                 containerEl.insertBefore(yearBox, containerEl.firstChild);
                 
-                // Readjust standard labels
                 document.getElementById("label-1").innerText = "Days";
                 document.getElementById("label-2").innerText = "Hrs";
                 document.getElementById("label-3").innerText = "Mins";
@@ -684,7 +687,6 @@ function startTimerEngine() {
                 displayedCountUpLayout = true;
             }
 
-            // Calculation sequence for precise real time count-up elapsed from 1999
             const rightNow = new Date();
             let ageYears = rightNow.getFullYear() - birthDate.getFullYear();
             let birthMonthDay = new Date(rightNow.getFullYear(), birthDate.getMonth(), birthDate.getDate(), birthDate.getHours(), birthDate.getMinutes());
@@ -693,7 +695,6 @@ function startTimerEngine() {
                 ageYears--;
             }
 
-            // Get standard millisecond delta from last anniversary to accurately parse days/hours/minutes/seconds
             const lastAnniversary = new Date(birthDate.getTime());
             lastAnniversary.setFullYear(birthDate.getFullYear() + ageYears);
             
