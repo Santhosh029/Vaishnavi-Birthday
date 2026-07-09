@@ -4,161 +4,219 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Surprise ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
-   1. GLOBAL STYLES & BACKGROUND
+   1. GLOBAL STYLES, VARIABLES & BACKGROUND
    ========================================================================== */
+:root {
+    --gold: #FFD700;
+    --gold-glow: rgba(255, 215, 0, 0.35);
+    --primary-pink: #ff4757;
+    --bg-dark: #07070a;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background:#000;
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--bg-dark);
+    position: relative;
 }
 
-body::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(255,215,0,.18),transparent 25%),
-    radial-gradient(circle at 80% 80%,rgba(255,215,0,.15),transparent 25%),
-    linear-gradient(135deg,#000,#111,#000);
-    animation:bgMove 8s ease infinite;
+/* Atmospheric Moving Nebula Background */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(255, 71, 87, 0.15), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(255, 215, 0, 0.15), transparent 35%),
+        linear-gradient(145deg, #07070a, #120e1a, #07070a);
+    background-size: 200% 200%;
+    animation: bgMove 12s ease infinite;
     z-index: 1;
 }
 
-@keyframes bgMove{
-    0%,100%{filter:brightness(1);}
-    50%{filter:brightness(1.15);}
+@keyframes bgMove {
+    0%, 100% { background-position: 0% 50%; filter: brightness(1); }
+    50% { background-position: 100% 50%; filter: brightness(1.15); }
 }
 
-/* Star Background Particles */
+/* Glowing Background Star Fields */
 .star {
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:gold;
-    border-radius:50%;
-    box-shadow:0 0 8px gold;
-    animation:float linear infinite;
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
     z-index: 1;
 }
 
-@keyframes float{
-    0%{ transform:translateY(100vh); opacity:0; }
-    10%{ opacity:1; }
-    100%{ transform:translateY(-120px); opacity:0; }
+@keyframes floatParticle {
+    0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+    15% { opacity: 0.8; box-shadow: 0 0 8px #fff; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
 }
 
-/* Master Page Manager */
-.page{
-    display:none;
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    animation:fadeIn .8s ease forwards;
+/* Master Transitions Engine */
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
     z-index: 10;
-    padding: 20px;
+    padding: 24px;
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
 }
 
-.page.active{
-    display:flex;
+.page.active {
+    display: flex;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: all;
 }
 
-@keyframes fadeIn{
-    from{ opacity:0; transform:translateY(25px); }
-    to{ opacity:1; transform:translateY(0); }
-}
-
-/* Reusable Glassmorphic Container Card */
+/* Premium Glassmorphic Container Cards */
 .card-base {
-    background:rgba(18,18,18,.92);
-    border:2px solid rgba(255,215,0,.5);
-    border-radius:25px;
-    backdrop-filter:blur(12px);
-    text-align:center;
-    box-shadow: 0 0 20px rgba(255,215,0,.25), 0 0 50px rgba(255,215,0,.12);
-    padding: 45px;
-    width: 550px;
+    background: rgba(15, 15, 22, 0.78);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    border-radius: 28px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.1);
+    padding: 45px 35px;
+    width: 520px;
     max-width: 100%;
-    transition: 0.5s ease;
+    position: relative;
+    z-index: 12;
 }
 
-h1 { color: gold; margin-bottom: 15px; font-size: 32px; }
-p { color: white; line-height: 1.8; font-size: 16px; }
+h1 { 
+    color: var(--gold); 
+    margin-bottom: 15px; 
+    font-size: 30px; 
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 15px var(--gold-glow);
+}
 
+p { 
+    color: rgba(255, 255, 255, 0.85); 
+    line-height: 1.7; 
+    font-size: 15px; 
+    font-weight: 300;
+}
+
+/* Luxury Interactive Buttons */
 button {
-    margin-top: 25px;
-    padding: 15px 35px;
+    margin-top: 30px;
+    padding: 16px 40px;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(90deg, #FFD700, #ffef99);
-    font-size: 16px;
-    font-weight: bold;
+    background: linear-gradient(90deg, #FFD700, #FFEAA7);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: .3s;
-    color: #000;
+    color: #0d0d11;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px gold;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px var(--gold-glow);
+}
+
+button:active {
+    transform: translateY(-1px);
 }
 
 button:disabled {
-    background: #444;
-    color: #888;
+    background: #252530;
+    color: #555565;
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 /* ==========================================================================
-   2. PAGE SPECIFIC DESIGNS
+   2. UNIQUE PAGE ANIMATIONS & STATES
    ========================================================================== */
 
-/* --- Page 1: Login --- */
-.login-card { width: 390px; }
-.lock { font-size:60px; animation:pulse 2s infinite; }
-.heart { font-size:70px; animation:heartBeat 1.4s infinite; filter:drop-shadow(0 0 12px crimson); }
+/* --- Page 1: Secure Gatekeeping Gateway --- */
+.login-card { width: 400px; }
+.lock { font-size: 55px; animation: pulse 2.5s infinite ease-in-out; display: inline-block; }
+.heart { font-size: 40px; animation: heartBeat 1.3s infinite ease-in-out; display: inline-block; filter: drop-shadow(0 0 10px var(--primary-pink)); margin-left: 10px; }
+
 input {
-    width:100%; margin-top:30px; padding:15px; border:none; outline:none;
-    border-radius:12px; font-size:17px; text-align:center; background: rgba(255,255,255,0.07); color: white;
-    border: 1px solid rgba(255,215,0,0.2);
+    width: 100%; margin-top: 25px; padding: 16px; border: none; outline: none;
+    border-radius: 16px; font-size: 18px; text-align: center; background: rgba(255, 255, 255, 0.05); color: white;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    letter-spacing: 4px;
+    transition: all 0.3s ease;
 }
-input:focus { border-color: gold; }
-.error { margin-top:18px; padding:12px; border-radius:10px; background:rgba(255,215,0,.08); color:#FFD700; display: none; }
-.shake { animation:shake .45s; }
-.unlock { animation:unlock .8s forwards; }
+input:focus { 
+    border-color: var(--gold); 
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+.error { margin-top: 18px; padding: 12px; border-radius: 12px; background: rgba(255, 71, 87, 0.12); border: 1px solid rgba(255, 71, 87, 0.25); color: #ff6b81; display: none; font-size: 13px; }
 
-@keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.12);} }
-@keyframes heartBeat { 0%,100%{transform:scale(1);} 50%{transform:scale(1.15);} }
-@keyframes shake { 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
-@keyframes unlock { 100%{transform:scale(.85); opacity:0;} }
+.shake { animation: shakeEffect 0.5s ease-in-out; }
+.unlock { animation: unlockEffect 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; }
 
-/* --- Page 3: Balloon Pop --- */
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 8px var(--gold-glow)); } }
+@keyframes heartBeat { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.18); } 60% { transform: scale(1.08); } }
+@keyframes shakeEffect { 0%, 100% { transform: translateX(0); } 15%, 45%, 75% { transform: translateX(-10px); } 30%, 60%, 90% { transform: translateX(10px); } }
+@keyframes unlockEffect { 100% { transform: scale(0.8); opacity: 0; filter: blur(10px); } }
+
+/* --- Page 3: Custom Physics Balloons --- */
 .balloon-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
-    margin: 40px 0;
-    height: 220px;
+    margin: 35px 0 20px 0;
+    height: 240px;
 }
 .balloon-wrapper {
     display: flex;
@@ -167,177 +225,194 @@ input:focus { border-color: gold; }
     position: relative;
 }
 .balloon {
-    width: 80px;
-    height: 95px;
+    width: 85px;
+    height: 105px;
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     cursor: pointer;
     position: relative;
-    animation: floatBalloon 4s ease-in-out infinite alternate;
-    transition: transform 0.2s ease;
+    animation: floatBalloon 3.5s ease-in-out infinite alternate;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset -8px -12px 20px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2);
 }
 .balloon::after {
     content: "";
     position: absolute;
-    bottom: -8px;
-    left: 36px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
+    bottom: -6px;
+    left: 37px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+.balloon::before {
+    content: ""; position: absolute; top: 15px; left: 15px; width: 15px; height: 25px; background: rgba(255,255,255,0.35); border-radius: 50%; transform: rotate(-30deg);
 }
 .balloon-string {
     width: 2px;
-    height: 60px;
-    background: rgba(255,255,255,0.4);
+    height: 75px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    transform-origin: top center;
+    animation: swingString 3.5s ease-in-out infinite alternate;
 }
-/* Balloon Colors */
-.b1 { background: #ff4757; animation-delay: 0s; } .b1::after { border-bottom: 8px solid #ff4757; }
-.b2 { background: #2ed573; animation-delay: 0.7s; } .b2::after { border-bottom: 8px solid #2ed573; }
-.b3 { background: #1e90ff; animation-delay: 1.4s; } .b3::after { border-bottom: 8px solid #1e90ff; }
+.b1 { background: linear-gradient(135deg, #ff4757, #ff6b81); animation-delay: 0s; } .b1::after { border-bottom: 8px solid #ff4757; }
+.b2 { background: linear-gradient(135deg, #00d2d3, #1dd1a1); animation-delay: 0.5s; } .b2::after { border-bottom: 8px solid #00d2d3; }
+.b3 { background: linear-gradient(135deg, #9b5de5, #f15bb5); animation-delay: 1s; } .b3::after { border-bottom: 8px solid #9b5de5; }
 
-.balloon:hover { transform: scale(1.1); }
+.balloon:hover { transform: scale(1.12) translateY(-5px); }
+
 .pop-text {
     position: absolute;
-    color: gold;
-    font-weight: bold;
-    font-size: 18px;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 16px;
     white-space: nowrap;
     opacity: 0;
-    transform: scale(0);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    top: 30px;
+    transform: translateY(20px) scale(0.6);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    bottom: -35px;
+    text-shadow: 0 0 10px var(--gold-glow);
 }
 .balloon.popped {
-    animation: popExplode 0.2s ease forwards;
+    animation: popExplode 0.25s cubic-bezier(0.1,-0.6,0.85,0) forwards;
     pointer-events: none;
 }
 .balloon.popped + .balloon-string { display: none; }
-.balloon.popped ~ .pop-text { opacity: 1; transform: scale(1); }
+.balloon.popped ~ .pop-text { opacity: 1; transform: translateY(0) scale(1); }
 
 @keyframes floatBalloon {
-    0% { transform: translateY(0) rotate(-3deg); }
-    100% { transform: translateY(-15px) rotate(3deg); }
+    0% { transform: translateY(0) rotate(-4deg); }
+    100% { transform: translateY(-20px) rotate(4deg); }
+}
+@keyframes swingString {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
 }
 @keyframes popExplode {
     0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.5; }
+    40% { transform: scale(1.3); opacity: 0.8; filter: brightness(1.5); }
     100% { transform: scale(0); opacity: 0; }
 }
 
-/* --- Page 4: Greeting Card --- */
+/* --- Page 4: Interactive 3D Greeting Envelope --- */
 .card-container {
-    perspective: 1500px;
-    width: 400px;
-    height: 300px;
-    margin: 30px auto;
+    perspective: 1600px;
+    width: 380px;
+    height: 270px;
+    margin: 35px auto 20px auto;
 }
 .birthday-card {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 .birthday-card.open {
-    transform: rotateY(-140deg);
+    transform: rotateY(-150deg);
 }
 .card-front, .card-inside {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 15px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 .card-front {
-    background: linear-gradient(135deg, #2c3e50, #000);
-    border: 2px solid gold;
-    color: gold;
+    background: linear-gradient(135deg, #1e1e2f, #0f0f1a);
+    border: 2px solid var(--gold);
+    color: var(--gold);
     z-index: 2;
 }
 .card-inside {
-    background: #1a1a1a;
-    border: 2px solid rgba(255,215,0,0.3);
+    background: #151522;
+    border: 1px solid rgba(255,215,0,0.25);
     color: white;
     transform: rotateY(180deg) translateZ(1px);
     z-index: 1;
 }
 
-/* --- Page 5: Gift Box Box --- */
+/* --- Page 5: Cinematic Gift Box Assembly --- */
 .gift-scene {
-    width: 200px;
-    height: 200px;
-    margin: 40px auto;
+    width: 220px;
+    height: 220px;
+    margin: 30px auto;
     position: relative;
+    cursor: pointer;
 }
 .gift-box {
-    width: 120px;
+    width: 130px;
     height: 120px;
-    background: #ff4757;
+    background: linear-gradient(135deg, #ff4757, #ee5253);
     position: absolute;
-    bottom: 0;
-    left: 40px;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    bottom: 10px;
+    left: 45px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
 }
 .gift-lid {
-    width: 130px;
-    height: 35px;
-    background: #ff6b81;
+    width: 142px;
+    height: 38px;
+    background: linear-gradient(135deg, #ff6b81, #ff4757);
     position: absolute;
-    bottom: 115px;
-    left: 35px;
+    bottom: 126px;
+    left: 39px;
     z-index: 2;
-    border-radius: 5px;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: all 0.6s cubic-bezier(0.68, -0.6, 0.27, 1.55);
 }
-.ribbon-v, .ribbon-h {
-    background: gold;
-    position: absolute;
-}
-.ribbon-v { width: 20px; height: 100%; left: 50px; }
-.ribbon-h { width: 100%; height: 20px; top: 50px; }
-.gift-lid .ribbon-v { height: 100%; left: 55px; }
-.gift-lid .ribbon-h { width: 100%; height: 15px; top: 10px; }
+.ribbon-v, .ribbon-h { background: var(--gold); position: absolute; box-shadow: 0 0 8px rgba(255,215,0,0.4); }
+.ribbon-v { width: 22px; height: 100%; left: 54px; }
+.ribbon-h { width: 100%; height: 22px; top: 49px; }
+.gift-lid .ribbon-v { height: 100%; left: 60px; }
+.gift-lid .ribbon-h { width: 100%; height: 16px; top: 11px; }
 
-/* Box Open Animation States */
+/* Subtle Idle Hover shake */
+.gift-scene:hover .gift-lid { transform: translateY(-4px); }
+.gift-scene:hover .gift-box { transform: scale(1.02); }
+
+/* Box Pop Open Kinetic State Transitions */
 .gift-scene.open .gift-lid {
-    transform: translateY(-60px) rotate(20deg);
+    transform: translateY(-90px) rotate(45deg) scale(0.8);
     opacity: 0;
 }
 .gift-scene.open .gift-box {
-    animation: boxShakeOut 0.5s ease forwards;
+    animation: boxPopAway 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
 }
-@keyframes boxShakeOut {
+@keyframes boxPopAway {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(0); opacity: 0; }
+    30% { transform: scale(1.15); filter: brightness(1.2); }
+    100% { transform: scale(0); opacity: 0; filter: blur(5px); }
 }
 
-/* --- Page 6: Photo Gallery --- */
+/* --- Page 6: Seamless Fluid Gallery Deck --- */
 .gallery-container {
     width: 100%;
-    max-width: 500px;
-    height: 350px;
+    max-width: 440px;
+    height: 330px;
     position: relative;
     margin: 25px auto;
     overflow: hidden;
-    border-radius: 15px;
-    border: 2px solid gold;
+    border-radius: 20px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
 }
 .slide {
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    transform: scale(1.08);
+    transform: scale(1.12) rotate(1deg);
+    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
 }
 .slide.active {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
 }
 .slide img {
     width: 100%;
@@ -345,12 +420,11 @@ input:focus { border-color: gold; }
     object-fit: cover;
 }
 
-/* Confetti Layer */
 #confetti-canvas {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 5;
+    z-index: 50;
     width: 100%;
     height: 100%;
 }
@@ -358,29 +432,30 @@ input:focus { border-color: gold; }
 </head>
 <body>
 
-<audio id="bg-music" src="music.mp3" loop></audio>
+<audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
 
 <canvas id="confetti-canvas"></canvas>
 
 <script>
-/* Particle Construction System */
-for(let i=0;i<60;i++){
-    const star=document.createElement("div");
-    star.className="star";
-    star.style.left=Math.random()*100+"vw";
-    star.style.animationDuration=(5+Math.random()*8)+"s";
-    star.style.animationDelay=Math.random()*8+"s";
+/* Dynamic Background Space Particles */
+for(let i=0; i<65; i++){
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = (6 + Math.random() * 10) + "s";
+    star.style.animationDelay = Math.random() * 7 + "s";
     document.body.appendChild(star);
 }
 </script>
 
 <section id="page1" class="page active">
     <div class="card-base login-card" id="loginCard">
-        <div class="lock" id="lock">🔒</div>
-        <div class="heart">❤️</div>
+        <div style="margin-bottom: 10px;">
+            <span class="lock" id="lock">🔒</span><span class="heart">❤️</span>
+        </div>
         <h1>Birthday Surprise</h1>
-        <p>Enter the secret password to continue ❤️</p>
-        <input type="password" id="password" placeholder="DDMMYYYY">
+        <p>Enter our special secret password date to proceed ✨</p>
+        <input type="password" id="password" placeholder="DDMMYYYY" maxlength="8">
         <button onclick="checkLogin()">Unlock My Surprise ✨</button>
         <div id="error" class="error"></div>
     </div>
@@ -388,30 +463,32 @@ for(let i=0;i<60;i++){
 
 <section id="page2" class="page">
     <div class="card-base">
-        <h1 style="font-size: 55px;">🎉</h1>
-        <p style="font-size: 22px; font-weight: 600;">"A cutiepie was born on this day, 26 years ago. ❤️🎉"</p>
+        <h1 style="font-size: 60px; margin-bottom: 20px;">🎉</h1>
+        <p style="font-size: 20px; font-weight: 500; color: var(--gold); line-height: 1.6;">
+            "A cutiepie was born on this day, 26 years ago. ❤️🎉"
+        </p>
         <button onclick="navigate(2, 3)">Please Click Here!</button>
     </div>
 </section>
 
 <section id="page3" class="page">
-    <div class="card-base" style="width: 650px;">
+    <div class="card-base" style="width: 600px;">
         <h1>Pop the Balloons! 🎈</h1>
-        <p>Click on each floating balloon to uncover your secret title.</p>
+        <p>Pop every single balloon to safely unpack your true hidden identity.</p>
         
         <div class="balloon-container">
             <div class="balloon-wrapper">
-                <div class="balloon b1" onclick="popBalloon(this, 'b1')"></div>
+                <div class="balloon b1" onclick="popBalloon(this)"></div>
                 <div class="balloon-string"></div>
                 <div class="pop-text">🎈 HAPPY</div>
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon b2" onclick="popBalloon(this, 'b2')"></div>
+                <div class="balloon b2" onclick="popBalloon(this)"></div>
                 <div class="balloon-string"></div>
                 <div class="pop-text">🎈 BIRTHDAY</div>
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon b3" onclick="popBalloon(this, 'b3')"></div>
+                <div class="balloon b3" onclick="popBalloon(this)"></div>
                 <div class="balloon-string"></div>
                 <div class="pop-text">Passenger Princess 💕</div>
             </div>
@@ -424,19 +501,19 @@ for(let i=0;i<60;i++){
 <section id="page4" class="page">
     <div class="card-base">
         <h1>An Envelope For You ✉️</h1>
-        <p>Tap the greeting card below to open your envelope message.</p>
+        <p>Tap the greeting envelope setup below to reveal your personal message note.</p>
         
         <div class="card-container" onclick="toggleCard()">
             <div class="birthday-card" id="bCard">
                 <div class="card-front">
-                    <span style="font-size: 45px;">💝</span>
+                    <span style="font-size: 50px; margin-bottom: 10px;">💝</span>
                     <h3>To My Favorite Human</h3>
-                    <p style="font-size: 12px; color: gold; margin-top: 10px;">(Click to Open)</p>
+                    <p style="font-size: 13px; color: var(--gold); margin-top: 15px;">(Tap to Flip Open)</p>
                 </div>
                 <div class="card-inside">
-                    <h2 style="color: gold; margin-bottom: 5px;">MESSAGE</h2>
-                    <hr style="width: 60px; border-color: gold; margin-bottom: 10px;">
-                    <p style="font-size: 14px; line-height: 1.6;">
+                    <h2 style="color: var(--gold); margin-bottom: 5px; font-size: 22px;">MESSAGE</h2>
+                    <hr style="width: 50px; border: none; height: 2px; background: var(--gold); margin-bottom: 15px;">
+                    <p style="font-size: 14px; line-height: 1.7; font-weight: 400; color: #f0f0f5;">
                         You bring so much joy, light, and laughter into my universe. Thank you for being you, and for making every single moment beautiful. May this year offer you all the wonders you deserve!
                     </p>
                 </div>
@@ -450,9 +527,9 @@ for(let i=0;i<60;i++){
 <section id="page5" class="page">
     <div class="card-base">
         <h1>"One Last Thing..." 🎁</h1>
-        <p>There is a final surprise hidden safely away inside inside this box.</p>
+        <p>There is an ultimate gift sequence wrapped tight inside this mysterious box container.</p>
         
-        <div class="gift-scene" id="giftScene">
+        <div class="gift-scene" id="giftScene" onclick="openGiftBox()">
             <div class="gift-lid">
                 <div class="ribbon-v"></div>
                 <div class="ribbon-h"></div>
@@ -463,14 +540,14 @@ for(let i=0;i<60;i++){
             </div>
         </div>
 
-        <button onclick="openGiftBox()">Tap Here</button>
+        <button onclick="openGiftBox()">Tap Box to Open</button>
     </div>
 </section>
 
 <section id="page6" class="page">
-    <div class="card-base" style="width: 600px;">
-        <h1 style="margin-bottom:5px;">Forever Beautiful ✨</h1>
-        <p style="color: gold; font-weight: 600; margin-bottom: 15px;">Happy 26th Birthday, My Love!</p>
+    <div class="card-base" style="width: 550px; padding: 35px 25px;">
+        <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
+        <p style="color: var(--gold); font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy 26th Birthday, My Love!</p>
         
         <div class="gallery-container">
             <div class="slide active"><img src="photo1.jpg" alt="Her Photo 1"></div>
@@ -480,34 +557,41 @@ for(let i=0;i<60;i++){
             <div class="slide"><img src="photo5.jpg" alt="Her Photo 5"></div>
         </div>
 
-        <p style="font-size:13px; color:#888;">Turning another year older, but always the same amazing soul.</p>
+        <p style="font-size: 13px; color: #8a8a9e; margin-top: 15px;">Turning another year older, but always the same amazing soul.</p>
     </div>
 </section>
 
 <script>
-// Base Controller Navigation Paths
+// Orchestration Engine Navigation Maps
 function navigate(currentNum, nextNum) {
-    document.getElementById(`page${currentNum}`).classList.remove("active");
-    document.getElementById(`page${nextNum}`).classList.add("active");
+    const currentPage = document.getElementById(`page${currentNum}`);
+    const nextPage = document.getElementById(`page${nextNum}`);
     
-    // Trigger final engine features if transitioning into Gallery view
-    if(nextNum === 6) {
-        startGalleryPlayback();
-        initConfettiRain();
-    }
+    currentPage.classList.remove("active");
+    
+    // Smooth delay switch for clean UI swap
+    setTimeout(() => {
+        nextPage.classList.add("active");
+        if(nextNum === 6) {
+            startGalleryPlayback();
+            initConfettiRain();
+        }
+    }, 300);
 }
 
-// Page 1 Identity Access Controller 
+// Security Validation Algorithm
 function checkLogin(){
     const inputPass = document.getElementById("password").value;
     const errorEl = document.getElementById("error");
     const cardEl = document.getElementById("loginCard");
     const lockEl = document.getElementById("lock");
 
+    // Default password as matches target criteria
     if(inputPass === "23052026"){
         lockEl.innerHTML = "🔓";
-        setTimeout(() => { cardEl.classList.add("unlock"); }, 400);
-        setTimeout(() => { navigate(1, 2); }, 1100);
+        lockEl.style.transform = "scale(1.2)";
+        setTimeout(() => { cardEl.classList.add("unlock"); }, 300);
+        setTimeout(() => { navigate(1, 2); }, 900);
     } else {
         errorEl.innerHTML = "💖 Incorrect Password. Try our special date! ❤️";
         errorEl.style.display = "block";
@@ -516,9 +600,9 @@ function checkLogin(){
     }
 }
 
-// Page 3 Balloon Mechanics Engine
+// Balloon Mechanics Handler
 let poppedCount = 0;
-function popBalloon(element, soundId) {
+function popBalloon(element) {
     if(!element.classList.contains("popped")) {
         element.classList.add("popped");
         poppedCount++;
@@ -528,53 +612,61 @@ function popBalloon(element, soundId) {
     }
 }
 
-// Page 4 Envelope Controller Actions
+// Flip/Card Management Logic
 function toggleCard() {
     document.getElementById("bCard").classList.toggle("open");
 }
 
-// Page 5 Gift Container State Transitions 
+// Gift Box Release Sequence Trigger
+let boxOpened = false;
 function openGiftBox() {
+    if(boxOpened) return;
+    boxOpened = true;
     const box = document.getElementById("giftScene");
     box.classList.add("open");
     setTimeout(() => {
         navigate(5, 6);
-    }, 1200);
+    }, 1000);
 }
 
-// Page 6 Carousel Management Loops
+// Automatic Media Framework Setup & Carousel Deck Loop
 function startGalleryPlayback() {
-    // Attempt Audio Media playback stream safely
     const audioStream = document.getElementById("bg-music");
-    audioStream.play().catch(err => console.log("Audio initialization playback context deferred until viewport event click"));
+    if(audioStream) {
+        audioStream.play().catch(err => console.log("Audio pipeline context deferred until native gesture actions."));
+    }
 
     let activeIndex = 0;
     const slides = document.querySelectorAll(".slide");
+    if(slides.length <= 1) return;
     
     setInterval(() => {
         slides[activeIndex].classList.remove("active");
         activeIndex = (activeIndex + 1) % slides.length;
         slides[activeIndex].classList.add("active");
-    }, 3000);
+    }, 3500);
 }
 
 // Confetti Particle Canvas Generation Logic
 let canvas, ctx, pieces = [];
 function initConfettiRain() {
     canvas = document.getElementById("confetti-canvas");
+    if(!canvas) return;
     ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    for (let i = 0; i < 120; i++) {
+    const colors = ['#ff4757', '#ff6b81', '#FFD700', '#00d2d3', '#9b5de5', '#f15bb5'];
+
+    for (let i = 0; i < 140; i++) {
         pieces.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
-            r: Math.random() * 6 + 4,
+            r: Math.random() * 5 + 4,
             d: Math.random() * canvas.height,
-            color: `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.8)`,
+            color: colors[Math.floor(Math.random() * colors.length)],
             tilt: Math.random() * 10 - 5,
-            speed: Math.random() * 3 + 2
+            speed: Math.random() * 2.5 + 2
         });
     }
     requestAnimationFrame(updateConfettiFrame);
@@ -584,7 +676,7 @@ function updateConfettiFrame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     pieces.forEach((p) => {
         p.y += p.speed;
-        p.x += Math.sin(p.tilt) * 0.5;
+        p.x += Math.sin(p.tilt) * 0.4;
         
         ctx.beginPath();
         ctx.lineWidth = p.r;
