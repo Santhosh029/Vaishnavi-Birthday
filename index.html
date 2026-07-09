@@ -195,22 +195,23 @@ input:focus {
 @keyframes cardViolentShake { 0%, 100% { transform: translateX(0); } 15%, 45%, 75% { transform: translateX(-10px); } 30%, 60%, 90% { transform: translateX(10px); } }
 @keyframes accessGrantedDismiss { 100% { transform: scale(0.75); opacity: 0; filter: blur(12px); } }
 
-/* --- Page 1B: Countdown Timer Node --- */
+/* --- Page 1B: Countdown / Count-up Box --- */
 .countdown-box {
     display: inline-flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
     margin: 25px 0;
     justify-content: center;
 }
 .time-unit {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(214, 48, 49, 0.2);
-    padding: 12px 18px;
+    padding: 12px 14px;
     border-radius: 15px;
     min-width: 75px;
 }
 .time-number {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     color: #ff7675;
     display: block;
@@ -427,6 +428,7 @@ for(let i=0; i<45; i++){
 }
 </script>
 
+<!-- PAGE 1: PASSION SECURE PORTAL -->
 <section id="page1" class="page active">
     <div class="card-base login-card" id="loginCard">
         <div style="margin-bottom: 12px;">
@@ -440,22 +442,25 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
+<!-- PAGE 1B: TIME GATE ENGINE (DYNAMICS CAPABLE OF COUNTDOWN & COUNT-UP) -->
 <section id="page1b" class="page">
     <div class="card-base">
         <h1 id="timer-title" style="font-size: 28px;">Patience, My Love... ⏳</h1>
         <p id="timer-msg">The magic is still gathering... Your birthday celebration will unveil its secrets on July 10th at 10:25 AM IST.</p>
         
-        <div class="countdown-box">
-            <div class="time-unit"><span id="days" class="time-number">00</span><span class="time-label">Days</span></div>
-            <div class="time-unit"><span id="hours" class="time-number">00</span><span class="time-label">Hrs</span></div>
-            <div class="time-unit"><span id="minutes" class="time-number">00</span><span class="time-label">Mins</span></div>
-            <div class="time-unit"><span id="seconds" class="time-number">00</span><span class="time-label">Secs</span></div>
+        <div class="countdown-box" id="time-container">
+            <!-- Dynamic structures will append or switch metrics here dynamically inside the script -->
+            <div class="time-unit" id="box-1"><span id="metric-1" class="time-number">00</span><span id="label-1" class="time-label">Days</span></div>
+            <div class="time-unit" id="box-2"><span id="metric-2" class="time-number">00</span><span id="label-2" class="time-label">Hrs</span></div>
+            <div class="time-unit" id="box-3"><span id="metric-3" class="time-number">00</span><span id="label-3" class="time-label">Mins</span></div>
+            <div class="time-unit" id="box-4"><span id="metric-4" class="time-number">00</span><span id="label-4" class="time-label">Secs</span></div>
         </div>
 
         <button id="time-gate-btn" disabled onclick="navigate('1b', 2)">Enter Celebration Room ✨</button>
     </div>
 </section>
 
+<!-- PAGE 2: VALENTINE OVERTURE -->
 <section id="page2" class="page">
     <div class="card-base" style="padding: 50px 40px;">
         <h1 style="font-size: 55px; margin-bottom: 15px;">💖</h1>
@@ -469,6 +474,7 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
+<!-- PAGE 3: INTERACTIVE STAGGERED CROSS-STEP DECK -->
 <section id="page3" class="page">
     <div class="card-base">
         <h1>Tap My Love Notes! 💖</h1>
@@ -493,6 +499,7 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
+<!-- PAGE 4: ROMANTIC 3D LETTER FLIP -->
 <section id="page4" class="page">
     <div class="card-base" style="width: 500px; padding: 35px 25px;">
         <h1>An Envelope For You ✉️</h1>
@@ -537,6 +544,7 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
+<!-- PAGE 5: THE KINETIC BEATING BOX -->
 <section id="page5" class="page">
     <div class="card-base">
         <h1>"One Last Thing..." 🎁</h1>
@@ -557,6 +565,7 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
+<!-- PAGE 6: IMMERSIVE IMAGE CANVAS -->
 <section id="page6" class="page">
     <div class="card-base" style="width: 550px; padding: 35px 25px;">
         <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
@@ -584,7 +593,7 @@ function navigate(currentId, nextId) {
     setTimeout(() => {
         nextPage.classList.add("active");
         if(nextId === '1b') {
-            startCountdownTimer();
+            startTimerEngine();
         }
         if(nextId === 6) {
             startGalleryPlayback();
@@ -620,44 +629,91 @@ function checkLogin(){
     }
 }
 
-let countdownInterval;
-function startCountdownTimer() {
-    const targetDate = new Date("2026-07-10T10:25:00+05:30").getTime();
-    
+// TIMELOCK CLOCK & LIVE COUNT-UP ENGINE FROM DOB
+let timerInterval;
+function startTimerEngine() {
+    // 1. Time Pass Condition (July 10, 2026 at 10:25 AM IST)
+    const unlockTarget = new Date("2026-07-10T10:25:00+05:30").getTime();
+    // 2. Real DOB Time Record (July 10, 1999 at 10:25 AM IST)
+    const birthDate = new Date("1999-07-10T10:25:00+05:30");
+
     const titleEl = document.getElementById("timer-title");
     const msgEl = document.getElementById("timer-msg");
     const btnEl = document.getElementById("time-gate-btn");
+    const containerEl = document.getElementById("time-container");
 
-    function updateTimer() {
+    let displayedCountUpLayout = false;
+
+    function handleTimeProcessing() {
         const now = new Date().getTime();
-        const difference = targetDate - now;
+        const distanceToUnlock = unlockTarget - now;
 
-        if (difference <= 0) {
-            clearInterval(countdownInterval);
-            document.getElementById("days").innerText = "00";
-            document.getElementById("hours").innerText = "00";
-            document.getElementById("minutes").innerText = "00";
-            document.getElementById("seconds").innerText = "00";
+        // IF LOCKED: Run the countdown safely
+        if (distanceToUnlock > 0) {
+            const days = Math.floor(distanceToUnlock / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distanceToUnlock % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distanceToUnlock % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distanceToUnlock % (1000 * 60)) / 1000);
+
+            document.getElementById("metric-1").innerText = days.toString().padStart(2, '0');
+            document.getElementById("metric-2").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("metric-3").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("metric-4").innerText = seconds.toString().padStart(2, '0');
+        } 
+        // IF UNLOCKED: Switch over to real live time passed since her birth
+        else {
+            if (!displayedCountUpLayout) {
+                // Initialize the structural conversion once
+                titleEl.innerHTML = "The Wait is Over! 💖";
+                msgEl.innerHTML = "Exactly this long ago, a beautiful angel was born into this universe to change my life forever:";
+                btnEl.removeAttribute("disabled");
+                
+                // Add a fifth unit block container layout seamlessly for Years metric tracking
+                const yearBox = document.createElement("div");
+                yearBox.className = "time-unit";
+                yearBox.style.borderColor = "rgba(255, 215, 0, 0.4)";
+                yearBox.innerHTML = '<span id="metric-years" class="time-number" style="color: #ffd700;">00</span><span class="time-label">Yrs</span>';
+                containerEl.insertBefore(yearBox, containerEl.firstChild);
+                
+                // Readjust standard labels
+                document.getElementById("label-1").innerText = "Days";
+                document.getElementById("label-2").innerText = "Hrs";
+                document.getElementById("label-3").innerText = "Mins";
+                document.getElementById("label-4").innerText = "Secs";
+
+                displayedCountUpLayout = true;
+            }
+
+            // Calculation sequence for precise real time count-up elapsed from 1999
+            const rightNow = new Date();
+            let ageYears = rightNow.getFullYear() - birthDate.getFullYear();
+            let birthMonthDay = new Date(rightNow.getFullYear(), birthDate.getMonth(), birthDate.getDate(), birthDate.getHours(), birthDate.getMinutes());
             
-            titleEl.innerHTML = "The Wait is Over! 💖";
-            msgEl.innerHTML = "Your birthday portal is completely unlocked. Step inside, my queen! ✨";
-            btnEl.removeAttribute("disabled");
-            return;
+            if (rightNow < birthMonthDay) {
+                ageYears--;
+            }
+
+            // Get standard millisecond delta from last anniversary to accurately parse days/hours/minutes/seconds
+            const lastAnniversary = new Date(birthDate.getTime());
+            lastAnniversary.setFullYear(birthDate.getFullYear() + ageYears);
+            
+            let deltaPassed = rightNow.getTime() - lastAnniversary.getTime();
+
+            const cDays = Math.floor(deltaPassed / (1000 * 60 * 60 * 24));
+            const cHours = Math.floor((deltaPassed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const cMinutes = Math.floor((deltaPassed % (1000 * 60 * 60)) / (1000 * 60));
+            const cSeconds = Math.floor((deltaPassed % (1000 * 60)) / 1000);
+
+            document.getElementById("metric-years").innerText = ageYears.toString().padStart(2, '0');
+            document.getElementById("metric-1").innerText = cDays.toString().padStart(2, '0');
+            document.getElementById("metric-2").innerText = cHours.toString().padStart(2, '0');
+            document.getElementById("metric-3").innerText = cMinutes.toString().padStart(2, '0');
+            document.getElementById("metric-4").innerText = cSeconds.toString().padStart(2, '0');
         }
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
     }
 
-    updateTimer();
-    countdownInterval = setInterval(updateTimer, 1000);
+    handleTimeProcessing();
+    timerInterval = setInterval(handleTimeProcessing, 1000);
 }
 
 let openedNotesCount = 0;
