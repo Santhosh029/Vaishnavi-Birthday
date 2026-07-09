@@ -70,7 +70,7 @@ body::before {
     0% { transform: translateY(105vh) scale(0.5) rotate(0deg); opacity: 0; }
     15% { opacity: 0.8; }
     90% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(-10vh) scale(1.3) rotate(360deg) opacity: 0; }
 }
 
 /* Seamless Framework Router Transitions */
@@ -292,12 +292,12 @@ input:focus {
     100% { background-position: 200% center; }
 }
 
-/* --- Page 4: FIXED 3D Flip Image Note Frame Tweak --- */
+/* --- Page 4: 3D Flip Card Container Layout --- */
 .card-container { 
     perspective: 1600px; 
     width: 100%; 
     max-width: 440px; 
-    height: 440px; /* Reduced to sit beautifully inside the parent glass base */
+    height: 440px; 
     margin: 20px auto; 
 }
 .birthday-card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
@@ -316,13 +316,12 @@ input:focus {
     color: white;
     transform: rotateY(180deg) translateZ(1px);
     z-index: 1;
-    overflow-y: auto; /* Activates natural vertical scrolling frame for your letter */
+    overflow-y: auto; 
     justify-content: flex-start;
     text-align: left;
     padding: 25px 20px;
 }
 
-/* Tailored scrollbar aesthetic tracking for luxury window */
 .card-inside::-webkit-scrollbar { width: 4px; }
 .card-inside::-webkit-scrollbar-thumb { background: var(--rose-gold); border-radius: 10px; }
 
@@ -402,7 +401,7 @@ input:focus {
 <canvas id="confetti-canvas"></canvas>
 
 <script>
-/* Dynamic Romantic Hearts Stream Background Generation Engine */
+/* Dynamic Romantic Hearts Background Generator Engine */
 for(let i=0; i<45; i++){
     const heart = document.createElement("div");
     heart.className = "heart-particle";
@@ -414,7 +413,6 @@ for(let i=0; i<45; i++){
 }
 </script>
 
-<!-- PAGE 1: PASSION SECURE PORTAL -->
 <section id="page1" class="page active">
     <div class="card-base login-card" id="loginCard">
         <div style="margin-bottom: 12px;">
@@ -428,7 +426,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 2: VALENTINE TIMELINE OVERTURE -->
 <section id="page2" class="page">
     <div class="card-base">
         <h1 style="font-size: 65px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(214,48,49,0.4));">💝</h1>
@@ -439,7 +436,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 3: INTERACTIVE STAGGERED CROSS-STEP DECK -->
 <section id="page3" class="page">
     <div class="card-base">
         <h1>Tap My Love Notes! 💖</h1>
@@ -464,7 +460,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 4: ROMANTIC 3D LETTER FLIP (RE-ALIGNED & STRUCTURALLY PERFECT) -->
 <section id="page4" class="page">
     <div class="card-base" style="width: 500px; padding: 35px 25px;">
         <h1>An Envelope For You ✉️</h1>
@@ -481,20 +476,24 @@ for(let i=0; i<45; i++){
                     <h2 style="color: #ff7675; margin-bottom: 2px; font-size: 19px; font-weight: 700;">Happy Birthday, my love.</h2>
                     <hr style="width: 40px; border: none; height: 1.5px; background: var(--rose-gold); margin-bottom: 12px;">
                     
+                    <div style="border-left: 3px solid #ff7675; padding-left: 12px; margin-bottom: 15px; background: rgba(214, 48, 49, 0.08); padding-top: 8px; padding-bottom: 8px; border-radius: 0 10px 10px 0;">
+                        <p style="font-size: 14px; line-height: 1.6; font-weight: 500; color: #ff7675; font-style: italic;">
+                            "Eight years of waiting vanished in the moment you held my hand;<br>
+                            Because forever began the day you chose me. ❤️"
+                        </p>
+                    </div>
+
                     <p style="font-size: 13.5px; line-height: 1.6; font-weight: 300; color: #fcefe6; margin-bottom: 12px;">
-                        You bring so much joy, light, and laughter into my universe. Thank you for being you, and for making every single moment beautiful. May this year offer you all the wonders you deserve!
+                        You bring so much joy, light, and laughter into my universe. Thank you for making every single ordinary day beautiful. May this year offer you all the wonders you deserve.
                     </p>
                     <p style="font-size: 13.5px; line-height: 1.6; font-weight: 300; color: #fcefe6; margin-bottom: 12px;">
-                        You are the poetry my heart never knew how to write, the calm after every storm, and the dream I never want to wake from. Your love has painted my world with colors I never knew existed, and every moment beside you feels like a beautiful verse in the story of us.
+                        You are the poetry my heart never knew how to write, and the dream I never want to wake from. Your love has painted my world with colors I never knew existed.
                     </p>
                     <p style="font-size: 13.5px; line-height: 1.6; font-weight: 300; color: #fcefe6; margin-bottom: 12px;">
-                        Thank you for being the light that guides me, the laughter that fills my soul, and the love that makes every ordinary day extraordinary. May this new chapter of your life be as radiant as your smile, as gentle as your heart, and as endless as the love we share.
-                    </p>
-                    <p style="font-size: 13.5px; line-height: 1.6; font-weight: 300; color: #fcefe6; margin-bottom: 15px;">
-                        No matter where life takes us, my heart will always find its way back to you. Today, and every day, I celebrate the incredible person you are.
+                        May this new chapter of your life be as radiant as your smile, as gentle as your heart, and as endless as the love we share. No matter where life takes us, my heart will always find its way back to you.
                     </p>
                     
-                    <p style="font-size: 14px; font-weight: 600; color: #ff7675; text-align: center; margin-top: 5px; line-height: 1.4;">
+                    <p style="font-size: 14px; font-weight: 600; color: #ff7675; text-align: center; margin-top: 15px; line-height: 1.4;">
                         Happy Birthday to my forever, my always, my greatest love. ❤️
                     </p>
                 </div>
@@ -505,7 +504,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 5: THE KINETIC BEATING BOX CHRONICLE -->
 <section id="page5" class="page">
     <div class="card-base">
         <h1>"One Last Thing..." 🎁</h1>
@@ -526,7 +524,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 6: THE RED CAROUSEL MEMORY CANVAS -->
 <section id="page6" class="page">
     <div class="card-base" style="width: 550px; padding: 35px 25px;">
         <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
@@ -561,7 +558,7 @@ function navigate(currentNum, nextNum) {
     }, 300);
 }
 
-// Identity Validation Algorithmic Interceptor
+// Identity Validation Security Logic
 function checkLogin(){
     const inputPass = document.getElementById("password").value;
     const errorEl = document.getElementById("error");
@@ -581,7 +578,7 @@ function checkLogin(){
     }
 }
 
-// Love Notes Interaction Controller Engine
+// Love Notes Interactive Counter Engine
 let openedNotesCount = 0;
 function openNote(element) {
     if(!element.classList.contains("opened")) {
@@ -593,12 +590,12 @@ function openNote(element) {
     }
 }
 
-// Envelope Action Triggers
+// Envelope Card Flipping Action
 function toggleCard() {
     document.getElementById("bCard").classList.toggle("open");
 }
 
-// Gift Opening Sequence Execution Maps with Force-Audio bypass
+// Gift Opening Sequence Execution with Audio triggers
 let boxOpened = false;
 function openGiftBox() {
     if(boxOpened) return;
@@ -606,7 +603,7 @@ function openGiftBox() {
     
     const audioStream = document.getElementById("bg-music");
     if(audioStream) {
-        audioStream.play().catch(err => console.log("Audio pipeline hardware access initialization deferred."));
+        audioStream.play().catch(err => console.log("Audio play permission synchronized."));
     }
     
     const box = document.getElementById("giftScene");
@@ -614,7 +611,7 @@ function openGiftBox() {
     setTimeout(() => { navigate(5, 6); }, 1000);
 }
 
-// Memory Slider Deck Rotation Engine
+// Memory Slider Gallery Transitions Engine
 function startGalleryPlayback() {
     let activeIndex = 0;
     const slides = document.querySelectorAll(".slide");
@@ -627,7 +624,7 @@ function startGalleryPlayback() {
     }, 3500);
 }
 
-// Custom Valentine Rain Heart-Confetti Mechanics Canvas
+// Heart Confetti Rain System Mechanics Canvas
 let canvas, ctx, pieces = [];
 function initConfettiRain() {
     canvas = document.getElementById("confetti-canvas");
