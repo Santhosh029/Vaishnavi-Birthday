@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>For My Universe ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -218,7 +218,7 @@ input:focus {
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 30%;
+    width: 33%;
 }
 .love-note {
     width: 80px;
@@ -257,34 +257,35 @@ input:focus {
     100% { transform: translateY(-15px); }
 }
 
-/* Custom Animated Reveal Texts */
+/* Rebuilt Step-Wise Cursive Typography Cascade Engine */
 .pop-text {
     position: absolute;
-    color: #ff7675;
-    font-weight: 600;
-    font-size: 16px;
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 36px;
     white-space: nowrap;
     opacity: 0;
     transform: scale(0.5);
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    text-shadow: 0 0 10px rgba(255,118,117,0.3);
+    background: linear-gradient(45deg, #ff7675, #fff, #ff7675);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 3s linear infinite;
 }
 
-/* --- Premium Style Upgrade for Passenger Princess --- */
+/* Premium Gradient Layout Shimmering for Final Title */
 .pop-text.special-title {
-    font-family: 'Caveat', cursive, sans-serif;
-    font-size: 34px;
-    letter-spacing: 1px;
+    font-size: 38px;
     background: linear-gradient(45deg, #ffd700, #ff7675, #ffd700);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shineText 3s linear infinite, dramaticGrow 1s ease-out forwards;
 }
 
 .love-note.opened ~ .pop-text { 
     opacity: 1; 
-    transform: scale(1); 
+    transform: scale(1);
+    animation: shineText 3s linear infinite, dramaticGrow 0.8s ease-out forwards;
 }
 
 @keyframes shineText {
@@ -314,6 +315,18 @@ input:focus {
     color: white;
     transform: rotateY(180deg) translateZ(1px);
     z-index: 1;
+}
+
+.rose-trigger {
+    font-size: 60px;
+    animation: heartpulsate 2s infinite ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(214,48,49,0.6));
+    transition: transform 0.3s ease;
+}
+.rose-trigger:hover {
+    transform: scale(1.15);
 }
 
 /* --- Page 5: Pulsing Velvet Heart-Box Surprise --- */
@@ -400,8 +413,8 @@ for(let i=0; i<45; i++){
         <div style="margin-bottom: 12px;">
             <span class="lock" id="lock">🔒</span><span class="heart-main">❤️</span>
         </div>
-        <h1>Birthday Surprise</h1>
-        <p>Enter our special anniversary/secret date to begin our romantic journey ❤️</p>
+        <h1>Our Sanctuary</h1>
+        <p>Enter our special secret date to begin our romantic journey ❤️</p>
         <input type="password" id="password" placeholder="DDMMYYYY" maxlength="8">
         <button onclick="checkLogin()">Unlock My Hearts ✨</button>
         <div id="error" class="error"></div>
@@ -412,8 +425,8 @@ for(let i=0; i<45; i++){
 <section id="page2" class="page">
     <div class="card-base">
         <h1 style="font-size: 65px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(214,48,49,0.4));">💝</h1>
-        <p style="font-size: 20px; font-weight: 500; color: #ff7675; line-height: 1.6;">
-            "A cutiepie was born on this day, 26 years ago. ❤️🎉"
+        <p style="font-size: 21px; font-weight: 400; color: #ff7675; line-height: 1.6; font-style: italic; padding: 0 10px;">
+            "In a universe full of shifting stars, meeting you remains my absolute favorite chapter of existence. ❤️🎉"
         </p>
         <button onclick="navigate(2, 3)">Please Click Here My Love!</button>
     </div>
@@ -428,11 +441,11 @@ for(let i=0; i<45; i++){
         <div class="love-container">
             <div class="love-wrapper">
                 <div class="love-note b1" onclick="openNote(this)">✉️</div>
-                <div class="pop-text">❤️ HAPPY</div>
+                <div class="pop-text">❤️ Happy</div>
             </div>
             <div class="love-wrapper">
                 <div class="love-note b2" onclick="openNote(this)">💌</div>
-                <div class="pop-text">❤️ BIRTHDAY</div>
+                <div class="pop-text">❤️ Birthday</div>
             </div>
             <div class="love-wrapper">
                 <div class="love-note b3" onclick="openNote(this)">💝</div>
@@ -444,17 +457,17 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 4: ROMANTIC 3D LETTER FLIP -->
+<!-- PAGE 4: ROMANTIC 3D LETTER FLIP (ROSE TRIGGER) -->
 <section id="page4" class="page">
     <div class="card-base">
         <h1>An Envelope For You ✉️</h1>
-        <p>Tap the velvet letter envelope framework setup below to read your note message.</p>
+        <p>Tap the rose below to read your note message.</p>
         
         <div class="card-container" onclick="toggleCard()">
             <div class="birthday-card" id="bCard">
                 <div class="card-front">
-                    <span style="font-size: 55px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(214,48,49,0.3));">🌹</span>
-                    <h3>To My Favorite Human</h3>
+                    <span class="rose-trigger">🌹</span>
+                    <h3 style="margin-top: 15px;">To My Favorite Human</h3>
                     <p style="font-size: 13px; color: var(--rose-gold); margin-top: 15px;">(Tap to Reveal Letter)</p>
                 </div>
                 <div class="card-inside">
@@ -496,7 +509,7 @@ for(let i=0; i<45; i++){
 <section id="page6" class="page">
     <div class="card-base" style="width: 550px; padding: 35px 25px;">
         <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
-        <p style="color: #ff7675; font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy 26th Birthday, My Love!</p>
+        <p style="color: #ff7675; font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy Birthday, My Love!</p>
         
         <div class="gallery-container">
             <div class="slide active"><img src="photo1.jpg" alt="Memory Photo 1"></div>
