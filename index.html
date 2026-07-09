@@ -436,7 +436,6 @@ for(let i=0; i<45; i++){
 }
 </script>
 
-<!-- PAGE 1: PASSION SECURE PORTAL -->
 <section id="page1" class="page active">
     <div class="card-base login-card" id="loginCard">
         <div style="margin-bottom: 12px;">
@@ -444,13 +443,12 @@ for(let i=0; i<45; i++){
         </div>
         <h1>Our Sanctuary</h1>
         <p>Enter our special secret date to begin our romantic journey ❤️</p>
-        <input type="text" id="password" placeholder="DDMMYYYY" maxlength="8">
+        <input type="password" id="password" placeholder="DDMMYYYY" maxlength="8">
         <button onclick="checkLogin()">Unlock My Hearts ✨</button>
         <div id="error" class="error"></div>
     </div>
 </section>
 
-<!-- PAGE 1B: TIME GATE ENGINE -->
 <section id="page1b" class="page">
     <div class="card-base">
         <h1 id="timer-title" style="font-size: 28px;">Patience, My Love... ⏳</h1>
@@ -467,7 +465,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 2: VALENTINE OVERTURE -->
 <section id="page2" class="page">
     <div class="card-base" style="padding: 50px 40px;">
         <h1 style="font-size: 45px; margin-bottom: 20px;">💖</h1>
@@ -481,7 +478,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 3: INTERACTIVE STAGGERED CROSS-STEP DECK -->
 <section id="page3" class="page">
     <div class="card-base">
         <h1>Tap My Love Notes! 💖</h1>
@@ -506,7 +502,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 4: ROMANTIC 3D LETTER FLIP -->
 <section id="page4" class="page">
     <div class="card-base" style="width: 500px; padding: 35px 25px;">
         <h1>An Envelope For You ✉️</h1>
@@ -551,7 +546,6 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 5: THE KINETIC BEATING BOX -->
 <section id="page5" class="page">
     <div class="card-base">
         <h1>"One Last Thing..." 🎁</h1>
@@ -572,14 +566,12 @@ for(let i=0; i<45; i++){
     </div>
 </section>
 
-<!-- PAGE 6: IMMERSIVE MIXED MIX CANVAS (5 VIDEOS + 3 PHOTOS) -->
 <section id="page6" class="page">
     <div class="card-base" style="width: 550px; padding: 35px 25px;">
         <h1 style="margin-bottom: 2px;">Forever Beautiful ✨</h1>
         <p style="color: #ff7675; font-weight: 600; margin-bottom: 20px; font-size: 18px;">Happy Birthday, My Love!</p>
         
         <div class="gallery-container">
-            <!-- Intermixed Slides Dynamic Stack (Videos do not contain loop tags) -->
             <div class="slide active"><video src="video1.mp4" muted playsinline></video></div>
             <div class="slide"><img src="photo1.jpg" alt="Memory 1"></div>
             <div class="slide"><video src="video2.mp4" muted playsinline></video></div>
@@ -756,13 +748,10 @@ let photoTimerToken = null;
 function startGalleryPlayback() {
     slides = document.querySelectorAll(".slide");
     if(slides.length === 0) return;
-    
-    // Play the very first slide slot immediately
     playSlideMedia(activeIndex);
 }
 
 function playSlideMedia(index) {
-    // Clear any active photo delay timers
     if(photoTimerToken) {
         clearTimeout(photoTimerToken);
         photoTimerToken = null;
@@ -772,37 +761,26 @@ function playSlideMedia(index) {
     const video = currentSlide.querySelector("video");
 
     if (video) {
-        // Reset and trigger video playback from the beginning
         video.currentTime = 0;
         
-        // Listen for the native finish event
         video.onended = function() {
-            video.onended = null; // Unbind hook
+            video.onended = null;
             advanceNextSlide();
         };
 
         video.play().catch(err => {
             console.log("Autoplay caught: trying next slot", err);
-            // Fallback safety trigger if browser blocks a video
             photoTimerToken = setTimeout(advanceNextSlide, 4000);
         });
     } else {
-        // It's a static image card: display it for 4000ms (4 seconds)
         photoTimerToken = setTimeout(advanceNextSlide, 4000);
     }
 }
 
 function advanceNextSlide() {
-    // Fade out active slide frame
     slides[activeIndex].classList.remove("active");
-    
-    // Increment to the next item
     activeIndex = (activeIndex + 1) % slides.length;
-    
-    // Fade in new frame layout
     slides[activeIndex].classList.add("active");
-    
-    // Hand over control to handle its media type
     playSlideMedia(activeIndex);
 }
 
